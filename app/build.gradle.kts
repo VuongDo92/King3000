@@ -69,7 +69,7 @@ dependencies {
     implementation(libs.koin.android)
     implementation(libs.koin.android.workmanager)
     implementation(libs.androidx.security.crypto.ktx)
-    // koin
+    // coil
     implementation(libs.coil.compose)
     implementation(libs.coil.gif)
     implementation(libs.volley)
