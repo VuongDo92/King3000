@@ -4,10 +4,10 @@ import com.pome.king3000.data.Sword
 
 
 sealed interface GamePlayAction {
-    data class OnSwipeRightClick(val selectedSword: Sword) : GamePlayAction
     data object OnChooseDone : GamePlayAction
 
-    data object OnSwipeLeftClick : GamePlayAction
-    data object OnSwipeUpClick : GamePlayAction
-    data object OnSwipeDownClick : GamePlayAction
+    data class OnSwipeCancel(val message: String) : GamePlayAction
+
+    data class OnSwipeRightClick(val selectedSword: Sword, val message: String) : GamePlayAction
+    data class OnSwipeLeftClick(val skippedSword: Sword, val message: String) : GamePlayAction
 }

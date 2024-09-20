@@ -27,4 +27,8 @@ interface GamePlayRepository {
         devil: Devil,
         chosenSwords: List<Sword>
     ): GameResult
+
+    fun savePlayerName(warriorName: String)
+
+    fun getPlayerName(): String?
 }

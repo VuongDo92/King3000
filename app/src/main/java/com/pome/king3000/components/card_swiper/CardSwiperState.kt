@@ -31,7 +31,6 @@ fun rememberCardSwiperState(): CardSwiperState {
     }
 }
 
-
 class CardSwiperState(
     internal val maxWidth: Float,
     internal val maxHeight: Float,

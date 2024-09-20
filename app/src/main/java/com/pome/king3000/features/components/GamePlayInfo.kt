@@ -32,7 +32,8 @@ fun GamePlayInfo(
     coilWidth: Int = 600,
     coilHeight: Int = 600,
     gifHeight: Dp = 300.dp,
-    gameResult: GameResult? = null
+    gameResult: GameResult? = null,
+    playerName: String? = null
 ) {
     Column(
         modifier = Modifier
@@ -86,7 +87,7 @@ fun GamePlayInfo(
 //                    )
                     Title(
                         title = stringResource(id = R.string.name),
-                        subtitle = gameResult.warrior.name ?: ""
+                        subtitle = gameResult.warrior.name ?: playerName ?: ""
                     )
                     Title(
                         title = stringResource(id = R.string.characteristic),

@@ -44,7 +44,8 @@ import org.koin.androidx.compose.koinViewModel
 fun GameReviewScreenRoot(
     viewModel: GameReviewViewModel = koinViewModel(),
     gameResult: GameResult,
-    onQuitClick: () -> Unit
+    onQuitClick: () -> Unit,
+    onReplayClick: (String) -> Unit
 ) {
     val st = viewModel.state.copy(
         gameResult = gameResult
@@ -54,7 +55,9 @@ fun GameReviewScreenRoot(
         onAction = { action ->
             when (action) {
                 GameReviewAction.OnQuitClick -> onQuitClick()
-                else -> Unit
+                is GameReviewAction.OnReplayClick -> {
+                    onReplayClick(action.playerName)
+                }
             }
             viewModel.onAction(action)
         }
@@ -134,7 +137,8 @@ private fun GameReviewScreen(
                         coilWidth = 100,
                         coilHeight = 100,
                         gifHeight = 50.dp,
-                        gameResult = state.gameResult
+                        gameResult = state.gameResult,
+                        playerName = state.warriorName
                     )
                     Spacer(modifier = Modifier.height(8.dp))
                     Row(
@@ -154,16 +158,16 @@ private fun GameReviewScreen(
                         ) {
                             onAction(GameReviewAction.OnQuitClick)
                         }
-//                        Spacer(modifier = Modifier.width(8.dp))
-//                        King3000ActionButton(
-//                            modifier = Modifier
-//                                .fillMaxWidth()
-//                                .weight(1f),
-//                            text = stringResource(id = R.string.replay),
-//                            isLoading = false
-//                        ) {
-//                            onAction(GameReviewAction.OnReplayClick)
-//                        }
+                        Spacer(modifier = Modifier.width(8.dp))
+                        King3000ActionButton(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .weight(1f),
+                            text = stringResource(id = R.string.replay),
+                            isLoading = false
+                        ) {
+                            onAction(GameReviewAction.OnReplayClick(state.warriorName ?: ""))
+                        }
                     }
                 }
 

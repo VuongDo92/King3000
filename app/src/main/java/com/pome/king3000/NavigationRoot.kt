@@ -96,9 +96,9 @@ private fun NavGraphBuilder.mainGraph(navController: NavHostController) {
                     navController.navigate("game_review/${gameResultStr}") {
                         popUpTo("intro") {
                             inclusive = false
-                            saveState = true
+                            saveState = false
                         }
-                        restoreState = true
+                        restoreState = false
                     }
                 }
             )
@@ -121,6 +121,17 @@ private fun NavGraphBuilder.mainGraph(navController: NavHostController) {
                         route = "intro",
                         inclusive = false,
                     )
+                },
+                onReplayClick = { warriorName ->
+                    navController.navigate(
+                        route = "game_play/${warriorName}"
+                    ) {
+                        popUpTo("intro") {
+                            inclusive = false
+                            saveState = true
+                        }
+                        restoreState = true
+                    }
                 }
             )
         }

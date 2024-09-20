@@ -6,12 +6,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.pome.king3000.domain.repository.GamePlayRepository
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 
 
-class IntroViewModel() : ViewModel() {
+class IntroViewModel(
+    private val gamePlayRepository: GamePlayRepository
+) : ViewModel() {
 
     var state by mutableStateOf(IntroState())
         private set
@@ -30,6 +33,7 @@ class IntroViewModel() : ViewModel() {
                 state = state.copy(
                     isInputtingWarriorName = false
                 )
+                gamePlayRepository.savePlayerName(action.warriorName)
                 viewModelScope.launch {
                     evenChannel.send(IntroEvent.GoPlaying(action.warriorName))
                 }

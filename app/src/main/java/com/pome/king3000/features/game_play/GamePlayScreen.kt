@@ -14,11 +14,9 @@ import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material.icons.rounded.Favorite
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -38,9 +36,9 @@ import com.pome.king3000.data.GameResult
 import com.pome.king3000.data.Warrior
 import com.pome.king3000.data.utils.Utils
 import com.pome.king3000.features.components.GamePlayInfo
+import com.pome.king3000.features.game_play.components.GameOverDialog
 import com.pome.king3000.features.game_play.components.Hint
 import com.pome.king3000.features.game_play.components.SwordProfileCard
-import com.pome.king3000.features.game_play.components.GameOverDialog
 import com.pome.king3000.ui.ObserveAsEvents
 import com.pome.king3000.ui.UiText
 import com.pome.king3000.ui.theme.King3000Theme
@@ -128,31 +126,29 @@ private fun GamePlayScreen(
     gamePlayState: GamePlayState,
     onAction: (GamePlayAction) -> Unit
 ) {
+    val scope = rememberCoroutineScope()
+
     val context = LocalContext.current
+
     King3000Scaffold {
         Box {
             val suggestedSwords = gamePlayState.suggestedSwords.reversed()
                 .map { it to rememberCardSwiperState() }
-            var hint by remember {
-                mutableStateOf(
-                    UiText
-                        .StringResource(id = R.string.swipe_a_card_or_press_a_button_below)
-                        .asString(context)
-                )
-            }
-            val scope = rememberCoroutineScope()
+
             GamePlayInfo(
                 modifier = Modifier.padding(
                     top = 44.dp
                 )
             )
             Box(
-                Modifier
+                modifier = Modifier
                     .padding(24.dp)
                     .fillMaxSize()
                     .aspectRatio(1f)
-                    .align(Alignment.Center)) {
+                    .align(Alignment.Center))
+            {
                 suggestedSwords.forEach { (sword, state) ->
+                    Log.i("Warrior Name", "${gamePlayState.warrior.name}")
                     if (state.swipedDirection == null) {
                         SwordProfileCard(
                             modifier = Modifier
@@ -167,9 +163,13 @@ private fun GamePlayScreen(
                                     },
                                     onSwipeCancel = {
                                         Log.d("Swipeable-Card", "Cancelled swipe")
-                                        hint = UiText
-                                            .StringResource(id = R.string.you_canceled_the_treasure_chest)
-                                            .asString(context = context)
+                                        onAction(
+                                            GamePlayAction.OnSwipeCancel(
+                                                message = UiText
+                                                    .StringResource(id = R.string.you_canceled_the_treasure_chest)
+                                                    .asString(context = context)
+                                            )
+                                        )
                                     }
                                 ),
                             sword = sword
@@ -177,28 +177,32 @@ private fun GamePlayScreen(
                     }
                     LaunchedEffect(sword, state.swipedDirection) {
                         if (state.swipedDirection != null) {
-                            hint = if(state.swipedDirection == Direction.Left) {
-                                gamePlayState.suggestedSwords.remove(sword)
-                                UiText.StringResource(
+                            if(state.swipedDirection == Direction.Left) {
+                                val message = UiText.StringResource(
                                     id = R.string.you_have_skipped_s,
                                     args = arrayOf(sword.name)
+                                ).asString(context)
+                                onAction(
+                                    GamePlayAction.OnSwipeLeftClick(
+                                        skippedSword = sword,
+                                        message = message
+                                    )
                                 )
-                                    .asString(context)
                             } else if(state.swipedDirection == Direction.Right) {
-                                gamePlayState.suggestedSwords.remove(sword)
-                                onAction(GamePlayAction.OnSwipeRightClick(sword))
-                                UiText.StringResource(
+                                val message = UiText.StringResource(
                                     id = R.string.you_have_chosen_s,
                                     args = arrayOf(sword.name)
+                                ).asString(context)
+                                onAction(
+                                    GamePlayAction.OnSwipeRightClick(
+                                        selectedSword = sword,
+                                        message = message
+                                    )
                                 )
-                                    .asString(context)
-
-                            } else {
-                                ""
                             }
                         }
                         if(gamePlayState.suggestedSwords.isEmpty()) {
-                           onAction(GamePlayAction.OnChooseDone)
+                            onAction(GamePlayAction.OnChooseDone)
                         }
                     }
                 }
@@ -209,7 +213,7 @@ private fun GamePlayScreen(
                     .padding(horizontal = 24.dp, vertical = 32.dp)
                     .fillMaxWidth(),
             ) {
-                Hint(hint)
+                Hint(gamePlayState.hint)
                 Row(
                     Modifier
                         .fillMaxWidth(),
@@ -259,7 +263,8 @@ private fun GamePlayScreenPreview() {
                 ),
                 devil = Devil(
                     power = Utils.randomDevilPower()
-                )
+                ),
+                suggestedSwordState = emptyList()
             ),
             onAction = {
 

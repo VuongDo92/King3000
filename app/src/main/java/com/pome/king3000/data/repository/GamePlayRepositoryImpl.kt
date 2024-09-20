@@ -1,5 +1,7 @@
 package com.pome.king3000.data.repository
 
+import android.content.SharedPreferences
+import com.pome.king3000.Constants
 import com.pome.king3000.data.Devil
 import com.pome.king3000.data.GameOver
 import com.pome.king3000.data.GameResult
@@ -8,7 +10,9 @@ import com.pome.king3000.data.Warrior
 import com.pome.king3000.domain.repository.GamePlayRepository
 import java.lang.Long.max
 
-class GamePlayRepositoryImpl() : GamePlayRepository {
+class GamePlayRepositoryImpl(
+    private val sharedPreferences: SharedPreferences
+) : GamePlayRepository {
 
     override fun loadSwordValue(
         attackValue: Long,
@@ -77,4 +81,16 @@ class GamePlayRepositoryImpl() : GamePlayRepository {
             weaponQuality = chosenSwordQuality
         )
     }
+
+    override fun savePlayerName(warriorName: String) {
+        sharedPreferences
+            .edit()
+            .putString(Constants.PLAYER_NAME, warriorName)
+            .apply()
+    }
+
+    override fun getPlayerName(): String? {
+        return sharedPreferences.getString(Constants.PLAYER_NAME, null)
+    }
+
 }

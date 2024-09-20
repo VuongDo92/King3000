@@ -1,15 +1,20 @@
 package com.pome.king3000.data.repositoty
 
+import android.content.SharedPreferences
 import com.pome.king3000.data.Devil
 import com.pome.king3000.data.Sword
 import com.pome.king3000.data.Warrior
 import com.pome.king3000.data.repository.GamePlayRepositoryImpl
 import com.pome.king3000.domain.repository.GamePlayRepository
 import org.junit.Before
+import org.mockito.Mock
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class GamePlayRepositoryTest {
+
+    @Mock
+    private lateinit var sharedPreferences: SharedPreferences
 
     private lateinit var gamePlayRepository: GamePlayRepository
 
@@ -24,7 +29,7 @@ class GamePlayRepositoryTest {
 
     @Before
     fun setUp() {
-        gamePlayRepository = GamePlayRepositoryImpl()
+        gamePlayRepository = GamePlayRepositoryImpl(sharedPreferences)
         // Sample warrior and devil setup
         warrior = Warrior(name = "King", characteristic = 8, physicalPower = 9, drawableResId = 9999)
         devil = Devil(power = 50)
