@@ -17,14 +17,15 @@ KING3000 is an engaging game that challenges players to strategize and battle ag
 
 ## Screenshots
 <div style="display: flex; justify-content: space-between;">
-<img src="screenshots/1-intro-screen.png" alt="Intro" width="300"/>
-<img src="screenshots/2-explanation-logic.png" alt="Explanation" width="300" />
-<img src="screenshots/3-input-player-name.png" alt="Input player name" width="300" />
-<img src="screenshots/4-game-play-screen.png" alt="Select a sword" width="300"/>
-<img src="screenshots/5-game-play-screen-1.png" alt="Select another sword" width="300" />
-<img src="screenshots/6-game-over-screen.png" alt="Game over" width="300" />
-<img src="screenshots/7-game-overview-screen.png" alt="Game Overview" width="300"/>
+<img src="screenshots/1-intro-screen.png" alt="Intro" width="150"/>
+<img src="screenshots/2-explanation-logic.png" alt="Explanation" width="150" />
+<img src="screenshots/3-input-player-name.png" alt="Input player name" width="150" />
+<img src="screenshots/4-game-play-screen.png" alt="Select a sword" width="150"/>
+<img src="screenshots/5-game-play-screen-1.png" alt="Select another sword" width="150" />
+<img src="screenshots/6-game-over-screen.png" alt="Game over" width="150" />
+<img src="screenshots/7-game-overview-screen.png" alt="Game Overview" width="150"/>
 </div>
+
 ## Features
 - **Dynamic Gameplay**: Experience thrilling battles with varying outcomes based on your choices.
 - **Strategic Decision-Making**: Choose whether to pick up swords, balancing value and weight for maximum power.
