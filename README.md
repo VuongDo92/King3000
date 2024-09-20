@@ -1,6 +1,6 @@
-# KING300
+# KING3000
 
-[//]: # (![KING300 Logo]&#40;link_to_logo_image&#41;)
+[//]: # (![KING3000 Logo]&#40;link_to_logo_image&#41;)
 
 ## Table of Contents
 - [Introduction](#introduction)
@@ -12,7 +12,7 @@
 - [Contact](#contact)
 
 ## Introduction
-KING300 is an engaging game that challenges players to strategize and battle against a powerful devil. Players control a warrior who must gather swords to increase their power and overcome formidable foes.
+KING3000 is an engaging game that challenges players to strategize and battle against a powerful devil. Players control a warrior who must gather swords to increase their power and overcome formidable foes.
 
 ## Features
 - **Dynamic Gameplay**: Experience thrilling battles with varying outcomes based on your choices.
@@ -20,7 +20,7 @@ KING300 is an engaging game that challenges players to strategize and battle aga
 - **Intuitive Controls**: Easy-to-learn mechanics suitable for all players.
 
 ## Gameplay
-In KING300, players control a warrior and face off against a devil. The warrior can collect swords, which affect their final power. Victory, defeat, or a draw will result from the match, determined by the warrior's accumulated power.
+In KING3000, players control a warrior and face off against a devil. The warrior can collect swords, which affect their final power. Victory, defeat, or a draw will result from the match, determined by the warrior's accumulated power.
 
 ### Game Objectives
 - Defeat the devil by having a higher power level.
@@ -38,7 +38,7 @@ In KING300, players control a warrior and face off against a devil. The warrior 
 This project contains a detailed sample app that implements MVVM architecture using Koin, Jetpack Compose
 
 ## Contributing
-We welcome contributions! To contribute to KING300:
+We welcome contributions! To contribute to KING3000:
 
 1. Fork the repository.
 2. Create a new branch:
