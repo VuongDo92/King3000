@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -60,14 +61,26 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.navigation.compose)
+    // Support UI
+    implementation(libs.accompanist.systemuicontroller)
     // Koin
     implementation(libs.koin.core)
     implementation(libs.koin.androidx.compose)
     implementation(libs.koin.android)
     implementation(libs.koin.android.workmanager)
     implementation(libs.androidx.security.crypto.ktx)
+    // koin
+    implementation(libs.coil.compose)
+    implementation(libs.coil.gif)
+    implementation(libs.volley)
+    // Serialization
+    implementation(libs.kotlinx.serialization.json)
     // Test
     testImplementation(libs.junit)
+    testImplementation(libs.mockito)
+    testImplementation(libs.kotlin.test.junit)
+    testImplementation(libs.kotlinx.coroutine.test)
+    testImplementation(libs.androidx.arch.core.test)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))

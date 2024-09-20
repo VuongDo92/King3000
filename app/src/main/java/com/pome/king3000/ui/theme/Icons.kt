@@ -1,5 +1,6 @@
 package com.pome.king3000.ui.theme
 
+
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
@@ -22,14 +23,10 @@ val ExclamationMarkIcon: ImageVector
     @Composable
     get() = ImageVector.vectorResource(id = R.drawable.danger)
 
-val FinishIcon: ImageVector
-    @Composable
-    get() = ImageVector.vectorResource(id = R.drawable.finish)
-
-val KeyboardArrowDownIcon: ImageVector
+val ArrowDownIcon: ImageVector
     @Composable
     get() = ImageVector.vectorResource(id = R.drawable.arrow_down)
 
-val KeyboardArrowUpIcon: ImageVector
+val ArrowUpIcon: ImageVector
     @Composable
     get() = ImageVector.vectorResource(id = R.drawable.arrow_up)

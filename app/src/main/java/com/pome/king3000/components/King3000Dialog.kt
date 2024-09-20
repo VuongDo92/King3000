@@ -16,9 +16,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
+import com.pome.king3000.ui.theme.King3000Theme
 
 @Composable
 fun King3000Dialog(
@@ -61,5 +63,40 @@ fun King3000Dialog(
                 primaryButton()
             }
         }
+    }
+}
+
+
+@Preview
+@Composable
+private fun PreViewKing3000Dialog() {
+    King3000Theme {
+        King3000Dialog(
+            title = "Title",
+            onDismiss = {
+
+            },
+            description = "Description",
+            primaryButton = {
+                King3000ActionButton(
+                    text = "Cancel",
+                    isLoading = false,
+                    onClick = {
+
+                    },
+                    modifier = Modifier.weight(1f)
+                )
+            },
+            secondaryButton = {
+                King3000OutlinedActionButton(
+                    text = "Continue",
+                    isLoading = false,
+                    onClick = {
+
+                    },
+                    modifier = Modifier.weight(1f)
+                )
+            }
+        )
     }
 }

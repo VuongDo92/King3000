@@ -37,7 +37,7 @@ import com.pome.king3000.R
 import com.pome.king3000.components.utils.DropDownItem
 import com.pome.king3000.ui.theme.ArrowLeftIcon
 import com.pome.king3000.ui.theme.ExclamationMarkIcon
-import com.pome.king3000.ui.theme.King3000Green
+import com.pome.king3000.ui.theme.King3000Pinky
 import com.pome.king3000.ui.theme.King3000Theme
 import com.pome.king3000.ui.theme.Poppins
 
@@ -139,7 +139,7 @@ private fun RuniqueToolbarPreview() {
                 Icon(
                     imageVector = ArrowLeftIcon,
                     contentDescription = null,
-                    tint = King3000Green,
+                    tint = King3000Pinky,
                     modifier = Modifier
                         .size(35.dp)
                 )

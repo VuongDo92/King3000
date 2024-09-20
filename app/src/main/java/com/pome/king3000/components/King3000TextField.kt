@@ -1,4 +1,3 @@
-
 package com.pome.king3000.components
 
 import androidx.compose.foundation.background
@@ -172,11 +171,11 @@ private fun King3000TextFieldPreview() {
     King3000Theme {
         King3000TextField(
             state = rememberTextFieldState(),
-            startIcon = CheckIcon,
-            endIcon = ExclamationMarkIcon,
-            hint = "Your player name",
+            startIcon = null,
+            endIcon = null,
+            hint = "Player name",
             title = "Player Name",
-            additionalInfo = "Must be valid name",
+            additionalInfo = "",
             modifier = Modifier
                 .fillMaxWidth()
         )

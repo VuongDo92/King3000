@@ -18,10 +18,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.pome.king3000.ui.theme.King3000Black
 import com.pome.king3000.ui.theme.King3000Gray
+import com.pome.king3000.ui.theme.King3000Theme
 
 
 @Composable
@@ -30,13 +33,14 @@ fun King3000ActionButton(
     isLoading: Boolean,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
+    containerColor: Color? = null,
     onClick: () -> Unit
 ) {
     Button(
         onClick = onClick,
         enabled = enabled,
         colors = ButtonDefaults.buttonColors(
-            containerColor = MaterialTheme.colorScheme.primary,
+            containerColor = containerColor ?: MaterialTheme.colorScheme.primary,
             contentColor = MaterialTheme.colorScheme.onPrimary,
             disabledContainerColor = King3000Gray,
             disabledContentColor = King3000Black
@@ -91,7 +95,7 @@ fun King3000OutlinedActionButton(
             .height(IntrinsicSize.Min)
     ) {
         Box(
-            modifier = Modifier
+            modifier = modifier
                 .fillMaxWidth()
                 .padding(vertical = 8.dp),
             contentAlignment = Alignment.Center
@@ -109,6 +113,16 @@ fun King3000OutlinedActionButton(
                     .alpha(if (isLoading) 0f else 1f),
                 fontWeight = FontWeight.Medium
             )
+        }
+    }
+}
+
+@Preview
+@Composable
+private fun PreviewKing3000ActionButton() {
+    King3000Theme {
+        King3000OutlinedActionButton(text = "Cancel", isLoading = false) {
+
         }
     }
 }

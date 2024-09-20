@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        p {
+            color: white;
+        }
+    </style>
+</head>
+<body style="background-color:black;">
+<p >
+    The app is a game including 3 kind of object such as Warrior, Swords and Devil.
+
+    <br />
+    <br />
+
+    The warrior consists of name, image, characteristic and physical power that means the inputted  warrior name, warrior visualization, warrior value and warrior max weight respectively. The warrior’s characteristic and physical power has to be picked randomly from 1 to 10.
+
+    <br />
+    <br />
+
+    The swords are a collection of shields and swords. Every item contains four main properties including attack value, attack weight, defend value and defend weight.  These values has to be from 1 to 10 by randomly. Since players strike to play a game, all the sword values has to choose randomly.
+    Furthermore, the sword items need name and photo to visualize.
+
+    <br />
+    <br />
+
+    The devil only has power property. The value of the property is picked randomly from 1 to 100.
+
+    <br />
+    <br />
+
+    While playing games, players can either swipe left to choose swords or click on love button at the bottom of the game screen. On the other hand, players can either swipe right to skip swords or click on can close button being sticked at the bottom game screen.  Players might swipe up or down but this action does not affect chosen collection.
+
+    <br />
+    <br />
+
+    After players go through the suggested swords, the game could use algorithm below to check whether the player wins over the devil.
+
+    <br />
+    <br />
+
+    data class Warrior( <br />
+    &nbsp;&nbsp;&nbsp;val name: String = "King", <br />
+    &nbsp;&nbsp;&nbsp;val characteristic: Long, <br />
+    &nbsp;&nbsp;&nbsp;val physicalPower: Long, // this is a capacity of weight <br />
+    &nbsp;&nbsp;&nbsp;val drawableResId: Int,<br />
+    )<br />
+    <br />
+
+    data class Sword( <br />
+    &nbsp;&nbsp;&nbsp;val name: String, <br />
+    &nbsp;&nbsp;&nbsp;val attackValue: Long, <br />
+    &nbsp;&nbsp;&nbsp;val attackWeight: Long, <br />
+    &nbsp;&nbsp;&nbsp;val defendValue: Long, <br />
+    &nbsp;&nbsp;&nbsp;val defendWeight: Long,<br />
+    &nbsp;&nbsp;&nbsp;val drawableResId: Int,<br />
+    )<br />
+    <br />
+    data class Devil( <br />
+    &nbsp;&nbsp;&nbsp;val power: Long <br />
+    ) <br />
+    <br />
+
+    /** <br />
+    * attachValue -> value 1 <br />
+    * attachWeight -> weight 1 <br />
+    * defendValue -> value 2 <br />
+    * defendWeight -> weight 2 <br />
+    * capacity --> weight max <br />
+    * */<br />
+    fun loadSword( <br />
+    &nbsp;&nbsp;&nbsp;attackValue: Long,  <br />
+    &nbsp;&nbsp;&nbsp;attackWeight: Long,<br />
+    &nbsp;&nbsp;&nbsp;defendValue: Long,<br />
+    &nbsp;&nbsp;&nbsp;defendWeight: Long,<br />
+    capacity: Long<br />
+    ): Long { <br />
+    &nbsp;&nbsp;&nbsp;// Check if we can take both items <br />
+    &nbsp;&nbsp;&nbsp;if (attackWeight + defendWeight <= capacity) { <br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return attackValue + defendValue <br />
+    &nbsp;&nbsp;&nbsp;}<br />
+    &nbsp;&nbsp;&nbsp;// Check if we can only take the attack item <br />
+    &nbsp;&nbsp;&nbsp;if (attackWeight <= capacity && defendWeight > capacity) { <br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return attackValue<br />
+    &nbsp;&nbsp;&nbsp;} <br />
+    &nbsp;&nbsp;&nbsp;// Check if we can only take the second item  <br />
+    &nbsp;&nbsp;&nbsp;if (defendWeight <= capacity && attackWeight > capacity) {  <br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return defendValue  <br />
+    &nbsp;&nbsp;&nbsp;} <br />
+    &nbsp;&nbsp;&nbsp;// If both items' weights are individually within the capacity, return the one with the highest value <br />
+    &nbsp;&nbsp;&nbsp;if (attackWeight <= capacity && defendWeight <= capacity) { <br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return max(attackValue, defendValue) <br />
+    &nbsp;&nbsp;&nbsp;} <br />
+    &nbsp;&nbsp;&nbsp;return 0L <br />
+    }<br/>
+    <br />
+    /** <br />
+    *  The final power of warriors consist of all loaded value of swords and the value of his/her characteristics <br />
+    */ <br />
+    val finalWarriorPower = loadedValues + warrior.characteristic <br />
+    <br />
+    /** <br />
+    *   when warrior’s powers is greater than devil’s power, the warrior obviously wins <br />
+    *   when warrior’s powers is less than devil’s power, the warrior loss <br />
+    *   when warrior’s powers is same devil’s power, the warrior draw the devil <br />
+    */ <br />
+    if (finalWarriorPower > devil.power) { <br />
+    &nbsp;&nbsp;&nbsp;VICTORY<br />
+    <br />
+    } else if (finalWarriorPower < devil.power) {<br />
+    &nbsp;&nbsp;&nbsp;DEFEATED<br />
+    <br />
+    } else {<br />
+    &nbsp;&nbsp;&nbsp;DRAW<br />
+    <br />
+    }<br />
+</p>
+</body>
+</html>
+
+
