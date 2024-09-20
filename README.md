@@ -16,14 +16,13 @@
 KING3000 is an engaging game that challenges players to strategize and battle against a powerful devil. Players control a warrior who must gather swords to increase their power and overcome formidable foes.
 
 ## Screenshots
-![Intro](screenshots/1-intro-screen.png)
-![Explanation](screenshots/2-explanation-logic.png)
-![Input player name](screenshots/3-input-player-name.png)
-![Input player name](screenshots/3-input-player-name.png)
-![Select a sword](screenshots/4-game-play-screen.png)
-![Select another sword](screenshots/5-game-play-screen-1.png)
-![Game Over](screenshots/6-game-over-screen.png)
-![Game Overview](screenshots/7-game-overview-screen.png)
+<img src="screenshots/1-intro-screen.png" alt="Intro" width="150" height="200"/>
+<img src="screenshots/2-explanation-logic.png" alt="Explanation" width="150" height="200"/>
+<img src="screenshots/3-input-player-name.png" alt="Input player name" width="150" height="200"/>
+<img src="screenshots/4-game-play-screen.png" alt="Select a sword" width="150" height="200"/>
+<img src="screenshots/5-game-play-screen-1.png" alt="Select another sword" width="150" height="200"/>
+<img src="screenshots/6-game-over-screen.png" alt="Game over" width="150" height="200"/>
+<img src="screenshots/7-game-overview-screen.png" alt="Game Overview" width="150" height="200"/>
 
 ## Features
 - **Dynamic Gameplay**: Experience thrilling battles with varying outcomes based on your choices.
