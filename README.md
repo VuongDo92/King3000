@@ -4,6 +4,7 @@
 
 ## Table of Contents
 - [Introduction](#introduction)
+- [Screenshots](#screenshots)
 - [Features](#features)
 - [Gameplay](#gameplay)
 - [How to Play](#how-to-play)
@@ -13,6 +14,16 @@
 
 ## Introduction
 KING300 is an engaging game that challenges players to strategize and battle against a powerful devil. Players control a warrior who must gather swords to increase their power and overcome formidable foes.
+
+## Screenshots
+![Intro](screenshots/1-intro-screen.png)
+![Explanation](screenshots/2-explanation-logic.png)
+![Input player name](screenshots/3-input-player-name.png)
+![Input player name](screenshots/3-input-player-name.png)
+![Select a sword](screenshots/4-game-play-screen.png)
+![Select another sword](screenshots/5-game-play-screen-1.png)
+![Game Over](screenshots/6-game-over-screen.png)
+![Game Overview](screenshots/7-game-overview-screen.png)
 
 ## Features
 - **Dynamic Gameplay**: Experience thrilling battles with varying outcomes based on your choices.
